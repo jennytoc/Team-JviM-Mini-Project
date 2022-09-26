@@ -34,8 +34,8 @@ public class Board {
 
     private boolean horizontalLine(String token) {
         int streak = 0;
-        for (int r = 0; r < board.length; r++) {
-            for (int c = 0; c < board[r].length; c++) {
+        for (int r = 0; r < row; r++) {
+            for (int c = 0; c < column; c++) {
                 if (board[r][c].equals(token)) {
                     streak++;
                     if (streak == 4) {
@@ -53,7 +53,7 @@ public class Board {
     private boolean verticalLine(String token) {
         int streak = 0;
         for (int c = 0; c < column; c++) {
-            for (int r = 0; r < board.length; r++) {
+            for (int r = 0; r < row; r++) {
                 if (board[r][c].equals(token)) {
                     streak++;
                     if (streak == 4) {
@@ -69,6 +69,11 @@ public class Board {
     }
 
     private boolean forwardDiagonal(String token) {
+        int streak = 0;
+        for (int r = 0; r < row; r++) {
+            for (int c = 0; c < column; c++) {
+            }
+        }
         return false;
     }
 
