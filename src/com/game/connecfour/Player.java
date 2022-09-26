@@ -1,6 +1,6 @@
 package com.game.connecfour;
 
-class Player {
+public class Player {
     // Fields
     private String player1;
     private String player2;
