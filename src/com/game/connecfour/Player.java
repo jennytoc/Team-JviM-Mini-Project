@@ -3,12 +3,14 @@ package com.game.connecfour;
 
 import java.util.Scanner;
 
+
 public class Player {
     // Fields
     private String player1;
     private String player2;
     private int lastColumn = 0;
     private int lastTop = 0;
+    private Board board = new Board(7, 6);
 
     // Constructor
 
@@ -18,17 +20,18 @@ public class Player {
         setPlayer2(player2);
     }
 
-    public void dropToken(char symbol, Scanner input){
+
+    public void dropToken(String symbol, Scanner input){
         do{
             System.out.println("\nPlayer " + symbol + "turn: ");
             int col = input.nextInt();
-            if(!(0 <= col && col < width)){
-                System.out.println("Column must be between 0 and " + (width -1));
+            if(!(0 <= col && col < Board.getColumn() )){
+                System.out.println("Column must be between 0 and " + (Board.getColumn() -1));
                 continue;
             }
-            for(int h = height -1; h >= 0; h --){
-                if(grid[h][col] == '.'){
-                    grid[lastTop = h][lastColumn = col] = symbol;
+            for(int h = lastTop -1; h >= 0; h --){
+                if(board.initBoard()[h][col].equals("_|")){
+                    board.initBoard()[lastTop = h][lastColumn = col] = symbol;
                     return;
                 }
             }
