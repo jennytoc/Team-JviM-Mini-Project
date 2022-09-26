@@ -1,5 +1,7 @@
 package com.game.connecfour;
 
+import java.util.Scanner;
+
 class Player {
     // Fields
     private String player1;
@@ -14,6 +16,26 @@ class Player {
         setPlayer1(player1);
         setPlayer2(player2);
     }
+
+    public void dropToken(char symbol, Scanner input){
+        do{
+            System.out.println("\nPlayer " + symbol + "turn: ");
+            int col = input.nextInt();
+            if(!(0 <= col && col < width)){
+                System.out.println("Column must be between 0 and " + (width -1));
+                continue;
+            }
+            for(int h = height -1; h >= 0; h --){
+                if(grid[h][col] == '.'){
+                    grid[lastTop = h][lastColumn = col] = symbol;
+                    return;
+                }
+            }
+            System.out.println("column " + col + " is full.");
+        }while (true);
+    }
+
+
 
     // Accessor Methods
 
