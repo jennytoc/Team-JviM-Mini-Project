@@ -33,34 +33,16 @@ public class Board {
 
     public boolean checkBoard(String token, int lastTop, int lastCol) {
         boolean result = false;
-        if (horizontalLine(lastTop, lastCol) || verticalLine(token) || forwardDiagonal(lastTop, lastCol) || backwardDiagonal(lastTop, lastCol)) {
+        if (horizontalLine(lastTop, token) || verticalLine(lastCol, token) || forwardDiagonal(lastTop, lastCol) || backwardDiagonal(lastTop, lastCol)) {
             result = true;
         }
         return result;
     }
 
-//    private boolean horizontalLine(String token) {
-//        int streak = 0;
-//        for (int r = 0; r < row; r++) {
-//            for (int c = 0; c < column; c++) {
-//                if (board[r][c].equals(token)) {
-//                    streak++;
-//                    if (streak == 4) {
-//                        return true;
-//                    }
-//                }
-//                else {
-//                    streak = 0;
-//                }
-//            }
-//        }
-//        return false;
-//    }
-
-    private boolean horizontalLine(int lastTop, int lastCol) {
+    private boolean horizontalLine(int lastTop, String token) {
         int streak = 0;
         for (int i = 0; i < board[lastTop].length; i++) {
-            if (board[lastTop][i].equals(board[lastTop][lastCol])) {
+            if (board[lastTop][i].equals(token)) {
                 streak++;
                 if (streak == 4) {
                     return true;
@@ -73,28 +55,20 @@ public class Board {
         return false;
     }
 
-
-//    private boolean verticalLine(String token) {
-//        int streak = 0;
-//        for (int c = 0; c < column; c++) {
-//            for (int r = 0; r < row; r++) {
-//                if (board[r][c].equals(token)) {
-//                    streak++;
-//                    if (streak == 4) {
-//                        return true;
-//                    }
-//                }
-//                else {
-//                    streak = 0;
-//                }
-//            }
-//        }
-//        return false;
-//    }
-
-    private boolean verticalLine(int lastTop, int lastCol) {
+    private boolean verticalLine(int lastCol, String token) {
         int streak = 0;
-        for ()
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][lastCol].equals(token)) {
+                streak++;
+                if (streak == 4) {
+                    return true;
+                }
+            }
+            else {
+                streak = 0;
+            }
+        }
+        return false;
     }
 
     // Changing to public for now for testing
