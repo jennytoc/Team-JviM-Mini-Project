@@ -31,45 +31,70 @@ public class Board {
         }
     }
 
-    public boolean checkBoard() {
+    public boolean checkBoard(String token, int lastTop, int lastCol) {
         boolean result = false;
+        if (horizontalLine(lastTop, lastCol) || verticalLine(token) || forwardDiagonal(lastTop, lastCol) || backwardDiagonal(lastTop, lastCol)) {
+            result = true;
+        }
         return result;
     }
 
-    private boolean horizontalLine(String token) {
+//    private boolean horizontalLine(String token) {
+//        int streak = 0;
+//        for (int r = 0; r < row; r++) {
+//            for (int c = 0; c < column; c++) {
+//                if (board[r][c].equals(token)) {
+//                    streak++;
+//                    if (streak == 4) {
+//                        return true;
+//                    }
+//                }
+//                else {
+//                    streak = 0;
+//                }
+//            }
+//        }
+//        return false;
+//    }
+
+    private boolean horizontalLine(int lastTop, int lastCol) {
         int streak = 0;
-        for (int r = 0; r < row; r++) {
-            for (int c = 0; c < column; c++) {
-                if (board[r][c].equals(token)) {
-                    streak++;
-                    if (streak == 4) {
-                        return true;
-                    }
+        for (int i = 0; i < board[lastTop].length; i++) {
+            if (board[lastTop][i].equals(board[lastTop][lastCol])) {
+                streak++;
+                if (streak == 4) {
+                    return true;
                 }
-                else {
-                    streak = 0;
-                }
+            }
+            else {
+                streak = 0;
             }
         }
         return false;
     }
 
-    private boolean verticalLine(String token) {
+
+//    private boolean verticalLine(String token) {
+//        int streak = 0;
+//        for (int c = 0; c < column; c++) {
+//            for (int r = 0; r < row; r++) {
+//                if (board[r][c].equals(token)) {
+//                    streak++;
+//                    if (streak == 4) {
+//                        return true;
+//                    }
+//                }
+//                else {
+//                    streak = 0;
+//                }
+//            }
+//        }
+//        return false;
+//    }
+
+    private boolean verticalLine(int lastTop, int lastCol) {
         int streak = 0;
-        for (int c = 0; c < column; c++) {
-            for (int r = 0; r < row; r++) {
-                if (board[r][c].equals(token)) {
-                    streak++;
-                    if (streak == 4) {
-                        return true;
-                    }
-                }
-                else {
-                    streak = 0;
-                }
-            }
-        }
-        return false;
+        for ()
     }
 
     // Changing to public for now for testing
