@@ -73,16 +73,31 @@ public class Board {
         return false;
     }
 
-    private boolean forwardDiagonal(String token) {
-        int streak = 0;
-        for (int r = 0; r < row; r++) {
-            for (int c = 0; c < column; c++) {
+    // Changing to public for now for testing
+    // Checks next three coordinates using Player's last play
+    public boolean forwardDiagonal(int lastTop, int lastCol) {
+        int streak = 1;
+        int nextCol = ++lastCol;
+        int nextTop = ++lastTop;
+        for (int i = 0; i < 3; i++) {
+            if (board[nextTop][nextCol].equals(board[lastTop][lastCol])) {
+                streak++;
+                if (streak == 4) {
+                    return true;
+                }
             }
+            else {
+                streak = 1;
+            }
+            System.out.println("Next col:" + nextCol);
+            System.out.println("Next top:" + nextTop);
+            nextCol++;
+            nextTop++;
         }
         return false;
     }
 
-    private boolean backwardDiagonal(String token) {
+    private boolean backwardDiagonal(int lastTop, int lastCol) {
         int streak = 0;
         for (int r = 0; r < row; r++) {
             for (int c = 0; c < column; c++) {
