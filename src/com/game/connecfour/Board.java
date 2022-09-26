@@ -41,9 +41,9 @@ public class Board {
                     if (streak == 4) {
                         return true;
                     }
-                    else {
-                        streak = 0;
-                    }
+                }
+                else {
+                    streak = 0;
                 }
             }
         }
@@ -59,9 +59,9 @@ public class Board {
                     if (streak == 4) {
                         return true;
                     }
-                    else {
-                        streak = 0;
-                    }
+                }
+                else {
+                    streak = 0;
                 }
             }
         }
