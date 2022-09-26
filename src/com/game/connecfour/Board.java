@@ -23,7 +23,12 @@ public class Board {
         for (String[] row : board) {
             Arrays.fill(row, "_|");
         }
-        System.out.println(Arrays.deepToString(board));
+    }
+
+    public void updateBoard(String token) {
+        for (String[] row : board) {
+            System.out.println(Arrays.toString(row));
+        }
     }
 
     // After this is called, it prints out the Board?
@@ -78,6 +83,12 @@ public class Board {
     }
 
     private boolean backwardDiagonal(String token) {
+        int streak = 0;
+        for (int r = 0; r < row; r++) {
+            for (int c = 0; c < column; c++) {
+
+            }
+        }
         return false;
     }
 
