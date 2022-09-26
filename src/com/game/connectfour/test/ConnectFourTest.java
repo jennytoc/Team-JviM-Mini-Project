@@ -6,6 +6,7 @@ class ConnectFourTest {
 
     public static void main(String[] args) {
         Board brd1 = new Board(7, 6);
-        brd1.initBoard();
+        brd1.updateBoard("R");
+        brd1.forwardDiagonal(4,3);
     }
 }
