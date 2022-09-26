@@ -31,7 +31,6 @@ public class Board {
         }
     }
 
-    // After this is called, it prints out the Board?
     public boolean checkBoard() {
         boolean result = false;
         return result;
@@ -77,8 +76,8 @@ public class Board {
     // Checks next three coordinates using Player's last play
     public boolean forwardDiagonal(int lastTop, int lastCol) {
         int streak = 1;
-        int nextCol = ++lastCol;
-        int nextTop = ++lastTop;
+        int nextTop = --lastTop;
+        int nextCol = --lastCol;
         for (int i = 0; i < 3; i++) {
             if (board[nextTop][nextCol].equals(board[lastTop][lastCol])) {
                 streak++;
@@ -87,22 +86,30 @@ public class Board {
                 }
             }
             else {
-                streak = 1;
+                return false;
             }
-            System.out.println("Next col:" + nextCol);
-            System.out.println("Next top:" + nextTop);
-            nextCol++;
-            nextTop++;
+            nextCol--;
+            nextTop--;
         }
         return false;
     }
 
-    private boolean backwardDiagonal(int lastTop, int lastCol) {
-        int streak = 0;
-        for (int r = 0; r < row; r++) {
-            for (int c = 0; c < column; c++) {
-
+    public boolean backwardDiagonal(int lastTop, int lastCol) {
+        int streak = 1;
+        int nextTop = --lastTop;
+        int nextCol = ++lastCol;
+        for (int i = 0; i < 3; i++) {
+            if (board[nextTop][nextCol].equals(board[lastTop][lastCol])) {
+                streak++;
+                if (streak == 4) {
+                    return true;
+                }
             }
+            else {
+                return false;
+            }
+            nextTop--;
+            nextCol++;
         }
         return false;
     }
