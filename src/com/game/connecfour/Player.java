@@ -2,7 +2,7 @@ package com.game.connecfour;
 
 import java.util.Scanner;
 
-class Player {
+public class Player {
     // Fields
     private String player1;
     private String player2;
