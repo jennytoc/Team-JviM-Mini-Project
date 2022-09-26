@@ -1,8 +1,9 @@
 package com.game.connecfour;
 
+
 import java.util.Scanner;
 
-class Player {
+public class Player {
     // Fields
     private String player1;
     private String player2;
@@ -43,6 +44,9 @@ class Player {
         return player1;
     }
 
+    // Add validation
+    //  Only 1 character, uppercase it, cannot be same initial as 2nd player
+    // Method overload
     public void setPlayer1(String player1) {
         this.player1 = player1;
     }
