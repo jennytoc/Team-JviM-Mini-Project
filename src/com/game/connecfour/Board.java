@@ -1,6 +1,6 @@
 package com.game.connecfour;
 
-class Board {
+public class Board {
     // Board Fields
     private static int column;
     private static int row;
