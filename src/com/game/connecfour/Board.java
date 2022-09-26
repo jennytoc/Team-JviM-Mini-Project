@@ -18,12 +18,13 @@ public class Board {
     }
 
     // Methods
-    public void initBoard() {
+    public String[][] initBoard() {
         board = new String[getRow()][getColumn()];
         for (String[] row : board) {
             Arrays.fill(row, "_|");
         }
         System.out.println(Arrays.deepToString(board));
+        return board;
     }
 
     // After this is called, it prints out the Board?
