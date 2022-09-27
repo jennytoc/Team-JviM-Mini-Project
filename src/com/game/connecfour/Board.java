@@ -66,9 +66,11 @@ public class Board {
 
     private boolean forwardDiagonal(int lastTop, int lastCol) {
         int streak = 1;
-        int nextTop = lastTop + 1;
-        int nextCol = lastCol - 1;
+        int nextTop;
+        int nextCol;
         if (lastTop < 3 && lastCol > 2) {
+            nextTop = lastTop + 1;
+            nextCol = lastCol - 1;
             for (int i = 0; i <= 3; i++) {
                 if (board[nextTop][nextCol] == (board[lastTop][lastCol])) {
                     streak++;
@@ -78,8 +80,24 @@ public class Board {
                 } else {
                     break;
                 }
-                nextCol--;
                 nextTop++;
+                nextCol--;
+            }
+        }
+        else if (lastTop > 2 && lastCol < 4) {
+            nextTop = lastTop - 1;
+            nextCol = lastCol + 1;
+            for (int i = 0; i <= 3; i++) {
+                if (board[nextTop][nextCol] == (board[lastTop][lastCol])) {
+                    streak++;
+                    if (streak == 4) {
+                        return true;
+                    }
+                } else {
+                    break;
+                }
+                nextTop--;
+                nextCol++;
             }
         }
         return false;
@@ -87,9 +105,11 @@ public class Board {
 
     private boolean backwardDiagonal(int lastTop, int lastCol) {
         int streak = 1;
-        int nextTop = lastTop + 1;
-        int nextCol = lastCol + 1;
+        int nextTop;
+        int nextCol;
         if (lastTop < 3 && lastCol < 4) {
+            nextTop = lastTop + 1;
+            nextCol = lastCol + 1;
             for (int i = 0; i <= 3; i++) {
                 if (board[nextTop][nextCol] == (board[lastTop][lastCol])) {
                     streak++;
@@ -101,6 +121,22 @@ public class Board {
                 }
                 nextTop++;
                 nextCol++;
+            }
+        }
+        else if (lastTop > 2 && lastCol > 2) {
+            nextTop = lastTop - 1;
+            nextCol = lastCol - 1;
+            for (int i = 0; i <= 3; i++) {
+                if (board[nextTop][nextCol] == (board[lastTop][lastCol])) {
+                    streak++;
+                    if (streak == 4) {
+                        return true;
+                    }
+                } else {
+                    break;
+                }
+                nextTop--;
+                nextCol--;
             }
         }
         return false;
