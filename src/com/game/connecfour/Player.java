@@ -10,7 +10,6 @@ public class Player {
     private String player2;
     private int lastColumn = 0;
     private int lastTop = 0;
-    // private Board board = new Board(7, 6);
 
     // Constructor
     public Player(String player1, String player2) {
@@ -32,6 +31,8 @@ public class Player {
                 if(board.getBoard()[h][col] == '-'){
                     lastTop = h;
                     lastColumn = col;
+                    System.out.println(lastTop);
+                    System.out.println(lastColumn);
                     board.setBoard(lastTop, lastColumn, symbol);
                     return;
                 }
@@ -47,9 +48,6 @@ public class Player {
         return player1;
     }
 
-    // Add validation
-    //  Only 1 character, uppercase it, cannot be same initial as 2nd player
-    // Method overload
     public void setPlayer1(String player1) {
         this.player1 = player1;
     }

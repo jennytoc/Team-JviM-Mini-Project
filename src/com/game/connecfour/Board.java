@@ -69,9 +69,9 @@ public class Board {
     // Checks next three coordinates using Player's last play
     private boolean forwardDiagonal(int lastTop, int lastCol) {
         int streak = 1;
-        int nextTop = lastTop - 1;
+        int nextTop = lastTop + 1;
         int nextCol = lastCol - 1;
-        if (lastTop > 2 && lastCol > 2) {
+        if (lastTop < 3 && lastCol > 2) {
             for (int i = 0; i <= 3; i++) {
                 if (board[nextTop][nextCol] == (board[lastTop][lastCol])) {
                     streak++;
@@ -82,7 +82,7 @@ public class Board {
                     break;
                 }
                 nextCol--;
-                nextTop--;
+                nextTop++;
             }
         }
         return false;
@@ -90,9 +90,9 @@ public class Board {
 
     private boolean backwardDiagonal(int lastTop, int lastCol) {
         int streak = 1;
-        int nextTop = lastTop - 1;
+        int nextTop = lastTop + 1;
         int nextCol = lastCol + 1;
-        if (lastTop > 2 && lastCol < 4) {
+        if (lastTop < 3 && lastCol < 4) {
             for (int i = 0; i <= 3; i++) {
                 if (board[nextTop][nextCol] == (board[lastTop][lastCol])) {
                     streak++;
@@ -102,7 +102,7 @@ public class Board {
                 } else {
                     break;
                 }
-                nextTop--;
+                nextTop++;
                 nextCol++;
             }
         }
