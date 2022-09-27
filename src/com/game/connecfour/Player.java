@@ -30,8 +30,6 @@ public class Player {
             }
 
             for(int h = Board.getRow() - 1; h >= 0; h--){
-                System.out.println(h);
-                System.out.println(col);
                 if(board.getBoard()[h][col] == '-'){
                     lastTop = h;
                     lastColumn = col;
