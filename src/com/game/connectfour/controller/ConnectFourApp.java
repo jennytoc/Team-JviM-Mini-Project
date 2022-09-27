@@ -62,6 +62,16 @@ public class ConnectFourApp {
         System.out.println(getPlayer2() + " your symbol is 'Y'\n");
     }
 
+    private void congratulations() {
+        try {
+            String congrats = Files.readString(Path.of("resources/congrats.txt"));
+            System.out.println(congrats);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public String getPlayer1() {
         return player1;
     }
@@ -76,15 +86,5 @@ public class ConnectFourApp {
 
     public void setPlayer2(String player2) {
         this.player2 = player2;
-    }
-
-    private void congratulations() {
-        try {
-            String congrats = Files.readString(Path.of("resources/congrats.txt"));
-            System.out.println(congrats);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
