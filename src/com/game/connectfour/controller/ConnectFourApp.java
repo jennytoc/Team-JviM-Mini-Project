@@ -33,6 +33,7 @@ public class ConnectFourApp {
             System.out.println(board);
 
             if (board.checkBoard(symbol, players.getLastTop(), players.getLastColumn())) {
+                congratulations();
                 System.out.println("\nPlayer " + symbol + " wins!");
                 return;
             }
@@ -44,6 +45,16 @@ public class ConnectFourApp {
         try {
             String banner = Files.readString(Path.of("resources/banner.txt"));
             System.out.println(banner);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void congratulations() {
+        try {
+            String congrats = Files.readString(Path.of("resources/congrats.txt"));
+            System.out.println(congrats);
         }
         catch (IOException e) {
             e.printStackTrace();
