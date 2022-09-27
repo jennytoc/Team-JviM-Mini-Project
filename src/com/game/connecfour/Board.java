@@ -107,8 +107,6 @@ public class Board {
     }
 
     // Accessor Methods
-
-
     public char[][] getBoard() {
         return board;
     }
