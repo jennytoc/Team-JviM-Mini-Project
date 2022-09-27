@@ -31,8 +31,6 @@ public class Player {
                 if(board.getBoard()[h][col] == '-'){
                     lastTop = h;
                     lastColumn = col;
-                    System.out.println(lastTop);
-                    System.out.println(lastColumn);
                     board.setBoard(lastTop, lastColumn, symbol);
                     return;
                 }
