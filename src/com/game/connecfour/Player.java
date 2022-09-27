@@ -21,7 +21,7 @@ public class Player {
     }
 
 
-    public void dropToken(String symbol, Scanner input){
+    public void dropToken(char symbol, Scanner input){
         do{
             System.out.println("\nPlayer " + symbol + "turn: ");
             int col = input.nextInt();
@@ -30,7 +30,7 @@ public class Player {
                 continue;
             }
             for(int h = lastTop -1; h >= 0; h --){
-                if(board.initBoard()[h][col].equals("_|")){
+                if(board.initBoard()[h][col] == '-'){
                     board.initBoard()[lastTop = h][lastColumn = col] = symbol;
                     return;
                 }

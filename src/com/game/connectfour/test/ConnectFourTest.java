@@ -11,5 +11,6 @@ class ConnectFourTest {
         // brd1.forwardDiagonal(3, 3);
         // brd1.backwardDiagonal(4,3);
         // brd1.backwardDiagonal(1, 1);
+        System.out.println(brd1);
     }
 }

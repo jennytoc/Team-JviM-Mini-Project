@@ -2,13 +2,14 @@ package com.game.connecfour;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Board {
     // Board Fields
-    private static final String[] PLAYERS = {"R", "Y"};
+    private static final char[] PLAYERS = {'R', 'Y'};
     private static int column;
     private static int row;
-    private String[][] board;
+    private char[][] board;
 
     // Constructor
     public Board(int column, int row) {
@@ -18,17 +19,17 @@ public class Board {
     }
 
     // Methods
-    public String[][] initBoard() {
-        board = new String[getRow()][getColumn()];
-        for (String[] row : board) {
-            Arrays.fill(row, "_|");
+    public char[][] initBoard() {
+        board = new char[getRow()][getColumn()];
+        for (char[] row : board) {
+            Arrays.fill(row, '-');
         }
         System.out.println(Arrays.deepToString(board));
         return board;
     }
 
     public void updateBoard(String token) {
-        for (String[] row : board) {
+        for (char[] row : board) {
             System.out.println(Arrays.toString(row));
         }
     }
@@ -49,8 +50,7 @@ public class Board {
                 if (streak == 4) {
                     return true;
                 }
-            }
-            else {
+            } else {
                 streak = 0;
             }
         }
@@ -65,8 +65,7 @@ public class Board {
                 if (streak == 4) {
                     return true;
                 }
-            }
-            else {
+            } else {
                 streak = 0;
             }
         }
@@ -107,8 +106,7 @@ public class Board {
                     if (streak == 4) {
                         return true;
                     }
-                }
-                else {
+                } else {
                     break;
                 }
                 nextTop--;
@@ -133,5 +131,15 @@ public class Board {
 
     public static void setRow(int row) {
         Board.row = row;
+    }
+
+    public String toString() {
+        return IntStream.range(0, getColumn())
+                .mapToObj(Integer::toString)
+                .collect(Collectors.joining()) +
+                "\n" +
+                Arrays.stream(initBoard())
+                        .map(String::new)
+                        .collect(Collectors.joining("\n"));
     }
 }
