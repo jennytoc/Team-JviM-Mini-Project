@@ -21,7 +21,7 @@ public class Player {
     public void dropToken(char symbol, Scanner input, Board board){
         do{
             System.out.println("\nPlayer " + symbol + " turn: ");
-            int col = input.nextInt() - 1;
+            int col = input.nextInt() -1;
             if(!(0 <= col && col < Board.getColumn())){
                 System.out.println("Column must be between 1 and " + (Board.getColumn() + 1));
                 continue;
@@ -35,7 +35,7 @@ public class Player {
                     return;
                 }
             }
-            System.out.println("column " + col + " is full.");
+            System.out.println("column " + (col +1)  + " is full.");
         }while (true);
     }
 
