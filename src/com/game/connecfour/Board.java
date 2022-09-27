@@ -27,12 +27,6 @@ public class Board {
         return board;
     }
 
-    public void updateBoard(String token) {
-        for (char[] row : board) {
-            System.out.println(Arrays.toString(row));
-        }
-    }
-
     public boolean checkBoard(char token, int lastTop, int lastCol) {
         boolean result = false;
         if (horizontalLine(lastTop, token) || verticalLine(lastCol, token) || forwardDiagonal(lastTop, lastCol) || backwardDiagonal(lastTop, lastCol)) {
@@ -73,7 +67,7 @@ public class Board {
 
     // Changing to public for now for testing
     // Checks next three coordinates using Player's last play
-    public boolean forwardDiagonal(int lastTop, int lastCol) {
+    private boolean forwardDiagonal(int lastTop, int lastCol) {
         int streak = 1;
         int nextTop = lastTop - 1;
         int nextCol = lastCol - 1;
@@ -94,7 +88,7 @@ public class Board {
         return false;
     }
 
-    public boolean backwardDiagonal(int lastTop, int lastCol) {
+    private boolean backwardDiagonal(int lastTop, int lastCol) {
         int streak = 1;
         int nextTop = lastTop - 1;
         int nextCol = lastCol + 1;
@@ -117,6 +111,15 @@ public class Board {
 
     // Accessor Methods
 
+
+    public char[][] getBoard() {
+        return board;
+    }
+
+    public void setBoard(int lastTop, int lastColumn, char symbol) {
+        this.board[lastTop][lastColumn] = symbol;
+    }
+
     public static int getColumn() {
         return column;
     }
@@ -138,7 +141,7 @@ public class Board {
                 .mapToObj(Integer::toString)
                 .collect(Collectors.joining()) +
                 "\n" +
-                Arrays.stream(initBoard())
+                Arrays.stream(getBoard())
                         .map(String::new)
                         .collect(Collectors.joining("\n"));
     }
