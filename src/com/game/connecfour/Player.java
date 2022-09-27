@@ -10,7 +10,7 @@ public class Player {
     private String player2;
     private int lastColumn = 0;
     private int lastTop = 0;
-    private Board board = new Board(7, 6);
+    // private Board board = new Board(7, 6);
 
     // Constructor
 
@@ -21,17 +21,20 @@ public class Player {
     }
 
 
-    public void dropToken(char symbol, Scanner input){
+    public void dropToken(char symbol, Scanner input, Board board){
         do{
             System.out.println("\nPlayer " + symbol + "turn: ");
-            int col = input.nextInt();
-            if(!(1 <= col && col < Board.getColumn() + 1)){
+            int col = input.nextInt() - 1;
+            if(!(0 <= col && col < Board.getColumn())){
                 System.out.println("Column must be between 1 and " + (Board.getColumn() + 1));
                 continue;
             }
-            for(int h = Board.getRow() -1; h >= 0; h --){
-                if(board.initBoard()[h][col] == '-'){
-                    board.initBoard()[lastTop = h][lastColumn = col] = symbol;
+
+            for(int h = board.getRow() - 1; h >= 0; h--){
+                if(board.getBoard()[h][col] == '-'){
+                    lastTop = h;
+                    lastColumn = col;
+                    board.setBoard(lastTop, lastColumn, symbol);
                     return;
                 }
             }

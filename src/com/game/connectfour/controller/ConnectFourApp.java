@@ -25,7 +25,7 @@ public class ConnectFourApp {
         for (int player = 0; moves-- > 0; player = 1 - player) {
             char symbol = PLAYERS[player];
 
-            players.dropToken(symbol, scanner);
+            players.dropToken(symbol, scanner, board);
 
             System.out.println(board);
 

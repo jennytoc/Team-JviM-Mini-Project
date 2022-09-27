@@ -117,6 +117,15 @@ public class Board {
 
     // Accessor Methods
 
+
+    public char[][] getBoard() {
+        return board;
+    }
+
+    public void setBoard(int lastTop, int lastColumn, char symbol) {
+        this.board[lastTop][lastColumn] = symbol;
+    }
+
     public static int getColumn() {
         return column;
     }
@@ -138,7 +147,7 @@ public class Board {
                 .mapToObj(Integer::toString)
                 .collect(Collectors.joining()) +
                 "\n" +
-                Arrays.stream(initBoard())
+                Arrays.stream(getBoard())
                         .map(String::new)
                         .collect(Collectors.joining("\n"));
     }
