@@ -100,8 +100,6 @@ public class Board {
         int nextCol = lastCol + 1;
         if (lastTop > 2 && lastCol < 4) {
             for (int i = 0; i <= 3; i++) {
-//                System.out.println(nextTop);
-//                System.out.println(nextCol);
                 if (board[nextTop][nextCol].equals(board[lastTop][lastCol])) {
                     streak++;
                     if (streak == 4) {
