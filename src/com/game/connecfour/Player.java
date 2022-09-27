@@ -10,18 +10,15 @@ public class Player {
     private String player2;
     private int lastColumn = 0;
     private int lastTop = 0;
-    private Board board = new Board(7, 6);
 
     // Constructor
-
-
     public Player(String player1, String player2) {
         setPlayer1(player1);
         setPlayer2(player2);
     }
 
 
-    public void dropToken(char symbol, Scanner input){
+    public void dropToken(char symbol, Scanner input, Board board){
         do{
             System.out.println("\nPlayer " + symbol + "turn: ");
             int col = input.nextInt();
