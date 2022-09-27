@@ -20,7 +20,7 @@ public class Player {
 
     public void dropToken(char symbol, Scanner input, Board board){
         do{
-            System.out.println("\nPlayer " + symbol + "turn: ");
+            System.out.println("\nPlayer " + symbol + " turn: ");
             int col = input.nextInt() - 1;
             if(!(0 <= col && col < Board.getColumn())){
                 System.out.println("Column must be between 1 and " + (Board.getColumn() + 1));

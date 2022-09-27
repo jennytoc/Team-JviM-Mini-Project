@@ -6,7 +6,6 @@ import java.util.stream.IntStream;
 
 public class Board {
     // Board Fields
-    public static final char[] PLAYERS = {'R', 'Y'};
     private static int column;
     private static int row;
     private char[][] board;
@@ -65,8 +64,6 @@ public class Board {
         return false;
     }
 
-    // Changing to public for now for testing
-    // Checks next three coordinates using Player's last play
     private boolean forwardDiagonal(int lastTop, int lastCol) {
         int streak = 1;
         int nextTop = lastTop + 1;
