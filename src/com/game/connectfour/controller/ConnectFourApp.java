@@ -3,6 +3,9 @@ package com.game.connectfour.controller;
 import com.game.connecfour.Board;
 import com.game.connecfour.Player;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class ConnectFourApp {
@@ -38,7 +41,12 @@ public class ConnectFourApp {
     }
 
     private void welcome() {
-        System.out.println("Welcome to Connect4");
-        System.out.println();
+        try {
+            String banner = Files.readString(Path.of("resources/banner.txt"));
+            System.out.println(banner);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
