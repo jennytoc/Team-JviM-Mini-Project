@@ -34,7 +34,7 @@ public class Board {
         }
     }
 
-    public boolean checkBoard(String token, int lastTop, int lastCol) {
+    public boolean checkBoard(char token, int lastTop, int lastCol) {
         boolean result = false;
         if (horizontalLine(lastTop, token) || verticalLine(lastCol, token) || forwardDiagonal(lastTop, lastCol) || backwardDiagonal(lastTop, lastCol)) {
             result = true;
@@ -42,10 +42,10 @@ public class Board {
         return result;
     }
 
-    private boolean horizontalLine(int lastTop, String token) {
+    private boolean horizontalLine(int lastTop, char  token) {
         int streak = 0;
         for (int i = 0; i < board[lastTop].length; i++) {
-            if (board[lastTop][i].equals(token)) {
+            if (board[lastTop][i] == (token)) {
                 streak++;
                 if (streak == 4) {
                     return true;
@@ -57,10 +57,10 @@ public class Board {
         return false;
     }
 
-    private boolean verticalLine(int lastCol, String token) {
+    private boolean verticalLine(int lastCol, char token) {
         int streak = 0;
         for (int i = 0; i < board.length; i++) {
-            if (board[i][lastCol].equals(token)) {
+            if (board[i][lastCol] == (token)) {
                 streak++;
                 if (streak == 4) {
                     return true;
@@ -80,7 +80,7 @@ public class Board {
         int nextCol = lastCol - 1;
         if (lastTop > 2 && lastCol > 2) {
             for (int i = 0; i <= 3; i++) {
-                if (board[nextTop][nextCol].equals(board[lastTop][lastCol])) {
+                if (board[nextTop][nextCol] == (board[lastTop][lastCol])) {
                     streak++;
                     if (streak == 4) {
                         return true;
@@ -101,7 +101,7 @@ public class Board {
         int nextCol = lastCol + 1;
         if (lastTop > 2 && lastCol < 4) {
             for (int i = 0; i <= 3; i++) {
-                if (board[nextTop][nextCol].equals(board[lastTop][lastCol])) {
+                if (board[nextTop][nextCol] == (board[lastTop][lastCol])) {
                     streak++;
                     if (streak == 4) {
                         return true;
@@ -134,7 +134,7 @@ public class Board {
     }
 
     public String toString() {
-        return IntStream.range(0, getColumn())
+        return IntStream.range(1, getColumn() + 1)
                 .mapToObj(Integer::toString)
                 .collect(Collectors.joining()) +
                 "\n" +
