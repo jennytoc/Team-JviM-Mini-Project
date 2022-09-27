@@ -58,8 +58,8 @@ public class Board {
 
     private boolean verticalLine(int lastCol, char token) {
         int streak = 0;
-        for (int i = 0; i < board.length; i++) {
-            if (board[i][lastCol] == (token)) {
+        for (char[] chars : board) {
+            if (chars[lastCol] == (token)) {
                 streak++;
                 if (streak == 4) {
                     return true;
