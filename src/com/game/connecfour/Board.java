@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class Board {
     // Board Fields
-    private static final char[] PLAYERS = {'R', 'Y'};
+    public static final char[] PLAYERS = {'R', 'Y'};
     private static int column;
     private static int row;
     private char[][] board;
@@ -24,7 +24,6 @@ public class Board {
         for (char[] row : board) {
             Arrays.fill(row, '-');
         }
-        System.out.println(Arrays.deepToString(board));
         return board;
     }
 
@@ -42,7 +41,7 @@ public class Board {
         return result;
     }
 
-    private boolean horizontalLine(int lastTop, char  token) {
+    private boolean horizontalLine(int lastTop, char token) {
         int streak = 0;
         for (int i = 0; i < board[lastTop].length; i++) {
             if (board[lastTop][i] == (token)) {
@@ -117,6 +116,7 @@ public class Board {
     }
 
     // Accessor Methods
+
     public static int getColumn() {
         return column;
     }
