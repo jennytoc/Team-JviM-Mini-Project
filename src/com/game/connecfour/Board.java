@@ -27,12 +27,6 @@ public class Board {
         return board;
     }
 
-    public void updateBoard(String token) {
-        for (char[] row : board) {
-            System.out.println(Arrays.toString(row));
-        }
-    }
-
     public boolean checkBoard(char token, int lastTop, int lastCol) {
         boolean result = false;
         if (horizontalLine(lastTop, token) || verticalLine(lastCol, token) || forwardDiagonal(lastTop, lastCol) || backwardDiagonal(lastTop, lastCol)) {
@@ -73,7 +67,7 @@ public class Board {
 
     // Changing to public for now for testing
     // Checks next three coordinates using Player's last play
-    public boolean forwardDiagonal(int lastTop, int lastCol) {
+    private boolean forwardDiagonal(int lastTop, int lastCol) {
         int streak = 1;
         int nextTop = lastTop - 1;
         int nextCol = lastCol - 1;
@@ -94,7 +88,7 @@ public class Board {
         return false;
     }
 
-    public boolean backwardDiagonal(int lastTop, int lastCol) {
+    private boolean backwardDiagonal(int lastTop, int lastCol) {
         int streak = 1;
         int nextTop = lastTop - 1;
         int nextCol = lastCol + 1;
