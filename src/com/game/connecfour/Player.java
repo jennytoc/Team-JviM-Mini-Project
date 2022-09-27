@@ -1,6 +1,9 @@
 package com.game.connecfour;
 
 
+import com.apps.util.Prompter;
+import com.game.connectfour.controller.ConnectFourApp;
+
 import java.util.Scanner;
 
 
@@ -18,21 +21,18 @@ public class Player {
     }
 
 
-    public void dropToken(char symbol, Scanner input, Board board){
+    public void dropToken(char symbol, Prompter prompter, Board board){
         do{
-            System.out.println("\nPlayer " + symbol + "turn: ");
-            int col = input.nextInt() - 1;
-            if(!(0 <= col && col < Board.getColumn())){
-                System.out.println("Column must be between 1 and " + (Board.getColumn() + 1));
+            int col = Integer.parseInt(prompter.prompt("\nPlayer " + symbol + " turn: ", "\\d", "Column must be between 1 and 7"));
+            if(!(0 <= col && col < Board.getColumn())) {
+                System.out.println("Column must be between 1 and 7");
                 continue;
             }
 
-            for(int h = board.getRow() - 1; h >= 0; h--){
+            for(int h = Board.getRow() - 1; h >= 0; h--){
                 if(board.getBoard()[h][col] == '-'){
                     lastTop = h;
                     lastColumn = col;
-                    System.out.println(lastTop);
-                    System.out.println(lastColumn);
                     board.setBoard(lastTop, lastColumn, symbol);
                     return;
                 }
