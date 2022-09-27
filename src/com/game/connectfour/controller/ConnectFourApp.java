@@ -11,7 +11,9 @@ import java.util.Scanner;
 
 public class ConnectFourApp {
     private static final char[] PLAYERS = {'R', 'Y'};
-    Player players = new Player("Joe", "Sally");
+    private String player1;
+    private String player2;
+    Player players = new Player(getPlayer1(), getPlayer2());
     private Prompter prompter = new Prompter(new Scanner(System.in));
 
     public void execute() {
@@ -22,7 +24,7 @@ public class ConnectFourApp {
         int moves = row * column;
         Board board = new Board(column, row);
 
-        System.out.println("Please use 1-" + column + " to choose a column.");
+        System.out.println("\nPlease use 1-" + column + " to choose a column.");
         System.out.println(board);
 
 
@@ -38,6 +40,10 @@ public class ConnectFourApp {
                 System.out.println("\nPlayer " + symbol + " wins!");
                 return;
             }
+            else if (board.tie(players.getLastTop(), players.getLastColumn(), symbol)){
+                System.out.println("Tie!");
+                return;
+            }
         }
 
     }
@@ -50,6 +56,26 @@ public class ConnectFourApp {
         catch (IOException e) {
             e.printStackTrace();
         }
+        setPlayer1(prompter.prompt("What is the name of Player 1?\n"));
+        System.out.println(getPlayer1() + " your symbol is 'R'\n");
+        setPlayer2(prompter.prompt("What is the name of Player 2\n"));
+        System.out.println(getPlayer2() + " your symbol is 'Y'\n");
+    }
+
+    public String getPlayer1() {
+        return player1;
+    }
+
+    public void setPlayer1(String player1) {
+        this.player1 = player1;
+    }
+
+    public String getPlayer2() {
+        return player2;
+    }
+
+    public void setPlayer2(String player2) {
+        this.player2 = player2;
     }
 
     private void congratulations() {

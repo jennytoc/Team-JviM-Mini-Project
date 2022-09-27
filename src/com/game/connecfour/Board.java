@@ -26,6 +26,24 @@ public class Board {
         return board;
     }
 
+    public boolean tie(int lastTop, int lastCol, char token){
+        boolean tie = true;
+        boolean Break = false;
+        for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 6; j++){
+                if(board[i][j] == token){
+                    tie = false;
+                    Break = true;
+                    break;
+                }
+            }
+            if(Break)
+                break;
+        }
+        return tie;
+    }
+
+
     public boolean checkBoard(char token, int lastTop, int lastCol) {
         boolean result = false;
         if (horizontalLine(lastTop, token) || verticalLine(lastCol, token) || forwardDiagonal(lastTop, lastCol) || backwardDiagonal(lastTop, lastCol)) {
@@ -143,8 +161,6 @@ public class Board {
     }
 
     // Accessor Methods
-
-
     public char[][] getBoard() {
         return board;
     }
