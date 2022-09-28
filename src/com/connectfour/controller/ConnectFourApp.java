@@ -18,34 +18,35 @@ public class ConnectFourApp {
 
     public void execute() {
         welcome();
+        boolean play = true;
+        while (play) {
+            int row = 6;
+            int column = 7;
+            int moves = row * column;
+            Board board = new Board(column, row);
 
-        int row = 6;
-        int column = 7;
-        int moves = row * column;
-        Board board = new Board(column, row);
-
-        System.out.println("\nPlease use 1-" + column + " to choose a column.");
-        System.out.println(board);
-
-
-        for (int player = 0; moves-- > 0; player = 1 - player) {
-            char symbol = PLAYERS[player];
-
-            players.dropToken(symbol, prompter, board);
-
+            System.out.println("\nPlease use 1-" + column + " to choose a column.");
             System.out.println(board);
 
-            if (board.checkBoard(symbol, players.getLastTop(), players.getLastColumn())) {
-                congratulations();
-                System.out.println("\nPlayer " + symbol + " wins!");
-                return;
-            }
-            else if (board.tie(players.getLastTop(), players.getLastColumn(), symbol)){
-                System.out.println("Tie!");
-                return;
-            }
-        }
+            for (int player = 0; moves-- > 0; player = 1 - player) {
+                char symbol = PLAYERS[player];
 
+                players.dropToken(symbol, prompter, board);
+
+                System.out.println(board);
+
+                if (board.checkBoard(symbol, players.getLastTop(), players.getLastColumn())) {
+                    congratulations();
+                    System.out.println("\nPlayer " + symbol + " wins!");
+                    break;
+                }
+                else if (board.tie(players.getLastTop(), players.getLastColumn(), symbol)){
+                    System.out.println("Tie!");
+                    return;
+                }
+            }
+            play = restartGame();
+        }
     }
 
     private void welcome() {
@@ -69,6 +70,31 @@ public class ConnectFourApp {
         }
         catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void goodbye() {
+        try {
+            String bye = Files.readString(Path.of("resources/goodbye-banner.txt"));
+            System.out.println(bye);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean restartGame() {
+        while (true) {
+            String restart = prompter.prompt("Do you want to start a new game? [Y/N]\n").toUpperCase();
+            if (restart.equals("Y")) {
+                return true;
+            } else if (restart.equals("N")) {
+                goodbye();
+                return false;
+            } else {
+                System.out.println("Please type Y or N only.");
+                continue;
+            }
         }
     }
 
