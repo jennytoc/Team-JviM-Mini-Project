@@ -40,7 +40,7 @@ public class ConnectFourApp {
                 System.out.println("\nPlayer " + symbol + " wins!");
                 return;
             }
-            else if (board.tie(players.getLastTop(), players.getLastColumn(), symbol)){
+            else if (board.tie(column, row)){
                 System.out.println("Tie!");
                 return;
             }

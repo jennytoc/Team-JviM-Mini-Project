@@ -26,18 +26,17 @@ public class Board {
         return board;
     }
 
-    public boolean tie(int lastTop, int lastCol, char symbol){
+    public boolean tie(int column, int row){
         boolean tie = true;
         boolean Break = false;
 
-        for(int i = 0; i < 8; i++){
-            for(int j = 0; j < 7; j++){
-                if(board[i][j] == symbol){
+        for(int i = 0; i <= column; i++){
+            for(int j = 0; j <= row; j++)
+                if (board[i][j] == '-') {
                     tie = false;
                     Break = true;
                     break;
                 }
-            }
             if(Break)
                 break;
         }
