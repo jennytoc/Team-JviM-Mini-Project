@@ -18,12 +18,11 @@ public class Board {
     }
 
     // Methods
-    public char[][] initBoard() {
+    public void initBoard() {
         board = new char[getRow()][getColumn()];
         for (char[] row : board) {
             Arrays.fill(row, '-');
         }
-        return board;
     }
 
     public boolean tie(){
@@ -34,7 +33,6 @@ public class Board {
         }
         return true;
     }
-
 
     public boolean checkBoard(char token, int lastTop, int lastCol) {
         boolean result = false;
