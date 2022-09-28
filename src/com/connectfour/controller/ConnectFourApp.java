@@ -42,7 +42,7 @@ public class ConnectFourApp {
                 }
                 else if (board.tie()){
                     System.out.println("Tie!");
-                    return;
+                    break;
                 }
             }
             play = restartGame();
@@ -93,7 +93,6 @@ public class ConnectFourApp {
                 return false;
             } else {
                 System.out.println("Please type Y or N only.");
-                continue;
             }
         }
     }
