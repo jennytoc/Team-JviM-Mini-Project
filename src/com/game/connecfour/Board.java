@@ -26,12 +26,12 @@ public class Board {
         return board;
     }
 
-    public boolean tie(int lastTop, int lastCol, char token){
+    public boolean tie(int lastTop, int lastCol, char symbol){
         boolean tie = true;
         boolean Break = false;
-        for(int i = 0; i < 7; i++){
-            for(int j = 0; j < 6; j++){
-                if(board[i][j] == token){
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j < 7; j++){
+                if(board[i][j] == symbol){
                     tie = false;
                     Break = true;
                     break;
