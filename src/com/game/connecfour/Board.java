@@ -29,8 +29,8 @@ public class Board {
     public boolean tie(int lastTop, int lastCol, char token){
         boolean tie = true;
         boolean Break = false;
-        for(int i = 0; i < 7; i++){
-            for(int j = 0; j < 6; j++){
+        for(int i = 0; i <= 7; i++){
+            for(int j = 0; j <= 6; j++){
                 if(board[i][j] == token){
                     tie = false;
                     Break = true;
