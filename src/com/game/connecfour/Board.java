@@ -54,8 +54,8 @@ public class Board {
 
     private boolean horizontalLine(int lastTop, char token) {
         int streak = 0;
-        for (int i = 0; i < board[lastTop].length; i++) {
-            if (board[lastTop][i] == (token)) {
+        for (char space : board[lastTop]) {
+            if (space == (token)) {
                 streak++;
                 if (streak == 4) {
                     return true;
@@ -95,7 +95,8 @@ public class Board {
                     if (streak == 4) {
                         return true;
                     }
-                } else {
+                }
+                else {
                     break;
                 }
                 nextTop++;
@@ -111,7 +112,8 @@ public class Board {
                     if (streak == 4) {
                         return true;
                     }
-                } else {
+                }
+                else {
                     break;
                 }
                 nextTop--;
@@ -134,7 +136,8 @@ public class Board {
                     if (streak == 4) {
                         return true;
                     }
-                } else {
+                }
+                else {
                     break;
                 }
                 nextTop++;
@@ -150,7 +153,8 @@ public class Board {
                     if (streak == 4) {
                         return true;
                     }
-                } else {
+                }
+                else {
                     break;
                 }
                 nextTop--;
