@@ -26,22 +26,13 @@ public class Board {
         return board;
     }
 
-    public boolean tie(int column, int row){
-        boolean tie = true;
-        boolean Break = false;
-
-        for(int i = 0; i <= column; i++){
-            for(int j = 0; j <= row; j++){
-                if(board[i][j] == '-'){
-                    tie = false;
-                    Break = true;
-                    break;
-                }
+    public boolean tie(){
+        for(char space : board[0]){
+            if(space == '-'){
+                return false;
             }
-            if(Break)
-                break;
         }
-        return tie;
+        return true;
     }
 
 
