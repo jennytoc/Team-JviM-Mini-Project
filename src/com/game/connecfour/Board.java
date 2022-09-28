@@ -46,7 +46,7 @@ public class Board {
 
     public boolean checkBoard(char token, int lastTop, int lastCol) {
         boolean result = false;
-        if (horizontalLine(lastTop, token) || verticalLine(lastCol, token) || forwardDiagonal(lastTop, lastCol) || backwardDiagonal(lastTop, lastCol)) {
+        if (horizontalLine(lastTop, token) || verticalLine(lastCol, token) || forwardDiagonal(token) || backwardDiagonal(token)) {
             result = true;
         }
         return result;
@@ -82,83 +82,35 @@ public class Board {
         return false;
     }
 
-    private boolean forwardDiagonal(int lastTop, int lastCol) {
-        int streak = 1;
-        int nextTop;
-        int nextCol;
-        if (lastTop < 3 && lastCol > 2) {
-            nextTop = lastTop + 1;
-            nextCol = lastCol - 1;
-            for (int i = 0; i <= 3; i++) {
-                if (board[nextTop][nextCol] == (board[lastTop][lastCol])) {
-                    streak++;
-                    if (streak == 4) {
-                        return true;
-                    }
+    private boolean forwardDiagonal(char token) {
+        for (int r = 0; r < board.length - 3; r++) {
+            for (int c = 3; c < board[r].length; c++) {
+                char start = board[r][c];
+                if (start != token) {
+                    continue;
                 }
-                else {
-                    break;
+                else if (board[r + 1][c - 1] == token &&
+                         board[r + 2][c - 2] == token &&
+                         board[r + 3][c - 3] == token) {
+                    return true;
                 }
-                nextTop++;
-                nextCol--;
-            }
-        }
-        else if (lastTop > 2 && lastCol < 4) {
-            nextTop = lastTop - 1;
-            nextCol = lastCol + 1;
-            for (int i = 0; i <= 3; i++) {
-                if (board[nextTop][nextCol] == (board[lastTop][lastCol])) {
-                    streak++;
-                    if (streak == 4) {
-                        return true;
-                    }
-                }
-                else {
-                    break;
-                }
-                nextTop--;
-                nextCol++;
             }
         }
         return false;
     }
 
-    private boolean backwardDiagonal(int lastTop, int lastCol) {
-        int streak = 1;
-        int nextTop;
-        int nextCol;
-        if (lastTop < 3 && lastCol < 4) {
-            nextTop = lastTop + 1;
-            nextCol = lastCol + 1;
-            for (int i = 0; i <= 3; i++) {
-                if (board[nextTop][nextCol] == (board[lastTop][lastCol])) {
-                    streak++;
-                    if (streak == 4) {
-                        return true;
-                    }
+    private boolean backwardDiagonal(char token) {
+        for (int r = 0; r < board.length - 3; r++) {
+            for (int c = 0; c < board[r].length - 3; c++) {
+                char start = board[r][c];
+                if (start != token) {
+                    continue;
                 }
-                else {
-                    break;
+                else if (board[r + 1][c + 1] == token &&
+                         board[r + 2][c + 2] == token &&
+                         board[r + 3][c + 3] == token) {
+                    return true;
                 }
-                nextTop++;
-                nextCol++;
-            }
-        }
-        else if (lastTop > 2 && lastCol > 2) {
-            nextTop = lastTop - 1;
-            nextCol = lastCol - 1;
-            for (int i = 0; i <= 3; i++) {
-                if (board[nextTop][nextCol] == (board[lastTop][lastCol])) {
-                    streak++;
-                    if (streak == 4) {
-                        return true;
-                    }
-                }
-                else {
-                    break;
-                }
-                nextTop--;
-                nextCol--;
             }
         }
         return false;
