@@ -1,6 +1,6 @@
-package com.game.connectfour.client;
+package com.connectfour.client;
 
-import com.game.connectfour.controller.ConnectFourApp;
+import com.connectfour.controller.ConnectFourApp;
 
 class Main {
 

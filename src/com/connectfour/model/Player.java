@@ -1,10 +1,7 @@
-package com.game.connecfour;
+package com.connectfour.model;
 
 
 import com.apps.util.Prompter;
-import com.game.connectfour.controller.ConnectFourApp;
-
-import java.util.Scanner;
 
 
 public class Player {
