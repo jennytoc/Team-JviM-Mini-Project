@@ -40,7 +40,7 @@ public class ConnectFourApp {
                     System.out.println("\nPlayer " + symbol + " wins!");
                     break;
                 }
-                else if (board.tie(column, row)){
+                else if (board.tie()){
                     System.out.println("Tie!");
                     return;
                 }
