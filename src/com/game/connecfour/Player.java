@@ -37,7 +37,7 @@ public class Player {
                     return;
                 }
             }
-            System.out.println("column " + col  + " is full.");
+            System.out.println("column " + (col + 1)  + " is full.");
         }while (true);
     }
 
