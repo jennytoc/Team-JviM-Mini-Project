@@ -1,8 +1,8 @@
-package com.game.connectfour.controller;
+package com.connectfour.controller;
 
 import com.apps.util.Prompter;
-import com.game.connecfour.Board;
-import com.game.connecfour.Player;
+import com.connectfour.model.Board;
+import com.connectfour.model.Player;
 
 import java.io.IOException;
 import java.nio.file.Files;
