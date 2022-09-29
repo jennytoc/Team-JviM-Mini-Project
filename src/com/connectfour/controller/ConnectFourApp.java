@@ -36,8 +36,10 @@ public class ConnectFourApp {
                 players.dropToken(symbol, prompter, board);
 
                 Console.clear();
-
+                System.out.println();
+                System.out.println();
                 System.out.println(board);
+                System.out.println();
 
                 if (board.checkBoard(symbol, players.getLastTop(), players.getLastColumn())) {
                     congratulations();
