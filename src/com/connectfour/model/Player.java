@@ -17,7 +17,6 @@ public class Player {
         setPlayer2(player2);
     }
 
-
     public void dropToken(char symbol, Prompter prompter, Board board){
         do{
             int col = Integer.parseInt(prompter.prompt("\nPlayer " + symbol + " turn: ", "\\d", "Column must be between 1 and 7")) - 1;
@@ -37,8 +36,6 @@ public class Player {
             System.out.println("column " + (col + 1)  + " is full.");
         }while (true);
     }
-
-
 
     // Accessor Methods
     public String getPlayer1() {

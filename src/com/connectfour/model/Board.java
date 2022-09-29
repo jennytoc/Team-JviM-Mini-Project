@@ -25,9 +25,9 @@ public class Board {
         }
     }
 
-    public boolean tie(){
-        for(char space : board[0]){
-            if(space == '-'){
+    public boolean tie() {
+        for(char space : board[0]) {
+            if(space == '-') {
                 return false;
             }
         }
@@ -132,12 +132,12 @@ public class Board {
     }
 
     public String toString() {
-        return IntStream.range(1, getColumn() + 1)
-                .mapToObj(Integer::toString)
-                .collect(Collectors.joining()) +
-                "\n" +
-                Arrays.stream(getBoard())
+        return Arrays.stream(getBoard())
                         .map(String::new)
-                        .collect(Collectors.joining("\n"));
+                        .collect(Collectors.joining("\n")) +
+                "\n" +
+                IntStream.range(1, getColumn() + 1)
+                        .mapToObj(Integer::toString)
+                        .collect(Collectors.joining());
     }
 }
