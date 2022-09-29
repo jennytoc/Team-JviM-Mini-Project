@@ -20,7 +20,7 @@ public class Player {
 
     public void dropToken(char symbol, Prompter prompter, Board board){
         do{
-            int col = Integer.parseInt(prompter.prompt("\nPlayer " + symbol + " turn: ", "\\d", "Column must be between 1 and 7")) - 1;
+            int col = Integer.parseInt(prompter.prompt("\nPlayer " + symbol + " turn: \n", "\\d", "Column must be between 1 and 7\n")) - 1;
             if(!(0 <= col && col < Board.getColumn())) {
                 System.out.println("Column must be between 1 and 7");
                 continue;
@@ -30,6 +30,7 @@ public class Player {
                 if(board.getBoard()[h][col] == '-'){
                     lastTop = h;
                     lastColumn = col;
+                    System.out.println();
                     board.setBoard(lastTop, lastColumn, symbol);
                     return;
                 }

@@ -1,5 +1,7 @@
 package com.connectfour.model;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -132,12 +134,12 @@ public class Board {
     }
 
     public String toString() {
-        return IntStream.range(1, getColumn() + 1)
-                .mapToObj(Integer::toString)
-                .collect(Collectors.joining()) +
-                "\n" +
-                Arrays.stream(getBoard())
+        return Arrays.stream(getBoard())
                         .map(String::new)
-                        .collect(Collectors.joining("\n"));
+                        .collect(Collectors.joining("\n")) +
+                "\n" +
+                IntStream.range(1, getColumn() + 1)
+                        .mapToObj(Integer::toString)
+                        .collect(Collectors.joining());
     }
 }
