@@ -1,5 +1,6 @@
 package com.connectfour.controller;
 
+import com.apps.util.Console;
 import com.apps.util.Prompter;
 import com.connectfour.model.Board;
 import com.connectfour.model.Player;
@@ -26,12 +27,15 @@ public class ConnectFourApp {
             Board board = new Board(column, row);
 
             System.out.println("\nPlease use 1-" + column + " to choose a column.");
+            System.out.println();
             System.out.println(board);
 
             for (int player = 0; moves-- > 0; player = 1 - player) {
                 char symbol = PLAYERS[player];
 
                 players.dropToken(symbol, prompter, board);
+
+                Console.clear();
 
                 System.out.println(board);
 
